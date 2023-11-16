@@ -10,6 +10,10 @@ impl Node {
 }
 
 fn main() {
+    // TODO: figure out how to make the description argument optional
     let node1 = Node::new("Root".to_string(), "".to_string());
     let node2 = Node::from(node1);
+
+    // println!("node1: {}", node1);
+    // println!("node2: {}", node2);
 }
