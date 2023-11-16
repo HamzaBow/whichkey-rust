@@ -1,3 +1,6 @@
-fn main() {
-    println!("Hello, world!");
+struct Node {
+    name: String,
+    description: String,
 }
+
+fn main() {}
