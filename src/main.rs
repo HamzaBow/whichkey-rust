@@ -12,12 +12,16 @@ impl Node {
 
 impl Display for Node {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "name: {}, description: {}", self.name, self.description)
+        write!(
+            f,
+            "Node(name = \"{}\", description = \"{}\")",
+            self.name, self.description
+        )
     }
 }
 
 fn main() {
     let node1 = Node::new("Root".to_string(), "".to_string());
 
-    println!("node1: -> {}", node1);
+    println!("{}", node1);
 }
