@@ -29,7 +29,9 @@ impl Display for Node {
 }
 
 fn main() {
-    let node1 = Node::new("Root".to_string(), "".to_string());
-
+    let mut node1 = Node::new("Root".to_string(), "".to_string());
+    node1
+        .children
+        .insert('a', Node::new("Child A".to_string(), "".to_string()));
     println!("{}", node1);
 }
