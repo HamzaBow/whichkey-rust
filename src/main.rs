@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::fmt::Display;
+
 struct Node {
     name: String,
     description: String,
@@ -13,6 +14,10 @@ impl Node {
             description,
             children: HashMap::new(),
         }
+    }
+
+    fn get_child(&self, ch: char) -> Option<&Node> {
+        return self.children.get(&ch);
     }
 }
 
@@ -33,7 +38,8 @@ fn main() {
     node.children
         .insert('a', Node::new("Child A".to_string(), "".to_string()));
     println!("{}", node);
-    let child = node.children.get(&'a');
+    // let child = node.children.get(&'a');
+    let child = node.get_child('a');
 
     match child {
         Some(child) => println!("{}", child),
