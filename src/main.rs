@@ -29,9 +29,14 @@ impl Display for Node {
 }
 
 fn main() {
-    let mut node1 = Node::new("Root".to_string(), "".to_string());
-    node1
-        .children
+    let mut node = Node::new("Root".to_string(), "".to_string());
+    node.children
         .insert('a', Node::new("Child A".to_string(), "".to_string()));
-    println!("{}", node1);
+    println!("{}", node);
+    let child = node.children.get(&'a');
+
+    match child {
+        Some(child) => println!("{}", child),
+        None => println!("No child found"),
+    }
 }
