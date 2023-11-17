@@ -1,12 +1,18 @@
+use std::collections::HashMap;
 use std::fmt::Display;
 struct Node {
     name: String,
     description: String,
+    children: HashMap<char, Node>,
 }
 
 impl Node {
     fn new(name: String, description: String) -> Self {
-        Self { name, description }
+        Self {
+            name,
+            description,
+            children: HashMap::new(),
+        }
     }
 }
 
@@ -14,8 +20,10 @@ impl Display for Node {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(
             f,
-            "Node(name = \"{}\", description = \"{}\")",
-            self.name, self.description
+            "Node(name = \"{}\", description = \"{}\", number of children = {})",
+            self.name,
+            self.description,
+            self.children.len()
         )
     }
 }
