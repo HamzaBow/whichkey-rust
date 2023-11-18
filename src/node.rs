@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::fmt::Display;
+use std::ops::Index;
 
 #[derive(Debug)]
 pub struct Node {
@@ -31,5 +32,13 @@ impl Display for Node {
             self.description,
             self.children.len()
         )
+    }
+}
+
+impl Index<char> for Node {
+    type Output = Node;
+    fn index(&self, index: char) -> &Self::Output {
+        // fn index(&self, index: char) {
+        self.children.get(&index).unwrap()
     }
 }

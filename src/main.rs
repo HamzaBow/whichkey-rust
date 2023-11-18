@@ -17,6 +17,10 @@ fn main() {
     println!("{:?}", node);
     println!("--------------------------");
     println!("{:#?}", node);
+    println!("--------------------------");
+    let node_x = &node['b'];
+    println!("{}", node_x);
+    println!("{}", node['a']);
 }
 
 fn print_node_if_exists(possible_node: Option<&Node>) {
