@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::fmt::Display;
 
+#[derive(Debug)]
 pub struct Node {
     pub name: String,
     pub description: String,

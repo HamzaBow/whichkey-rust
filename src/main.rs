@@ -13,6 +13,10 @@ fn main() {
 
     print_node_if_exists(child_a);
     print_node_if_exists(child_b);
+    println!("--------------------------");
+    println!("{:?}", node);
+    println!("--------------------------");
+    println!("{:#?}", node);
 }
 
 fn print_node_if_exists(possible_node: Option<&Node>) {
