@@ -1,7 +1,8 @@
 use std::collections::HashMap;
 use std::fmt::Display;
+use std::io;
 use std::ops::{Index, IndexMut};
-use std::process::Command;
+use std::process::{Command, Output};
 
 #[derive(Debug)]
 pub struct Node {
@@ -23,6 +24,13 @@ impl Node {
 
     pub fn get_child(&self, ch: char) -> Option<&Node> {
         return self.children.get(&ch);
+    }
+
+    pub fn run_command(&mut self) -> io::Result<Output> {
+        match &mut self.command {
+            Some(command) => command.output(),
+            None => Err(io::Error::new(io::ErrorKind::Other, "No command set")),
+        }
     }
 }
 
