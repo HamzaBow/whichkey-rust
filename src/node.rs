@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::fmt::Display;
-use std::ops::Index;
+use std::ops::{Index, IndexMut};
 use std::process::Command;
 
 #[derive(Debug)]
@@ -43,5 +43,16 @@ impl Index<char> for Node {
     fn index(&self, index: char) -> &Self::Output {
         // fn index(&self, index: char) {
         self.children.get(&index).unwrap()
+    }
+}
+
+impl IndexMut<char> for Node {
+    fn index_mut(&mut self, index: char) -> &mut Self::Output {
+        self.children.entry(index).or_insert_with(|| Node {
+            name: "".to_string(),
+            description: "".to_string(),
+            command: None,
+            children: HashMap::new(),
+        })
     }
 }

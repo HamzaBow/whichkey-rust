@@ -7,12 +7,13 @@ fn main() {
     node.children.insert('a', child_node);
     node.children
         .insert('b', Node::new("Child B".to_string(), "".to_string(), None));
+    node['c'] = Node::new("Child c".to_string(), "".to_string(), None);
     println!("{}", node);
     let child_a = node.get_child('a');
-    let child_b = node.get_child('b');
+    let child_c = node.get_child('c');
 
     print_node_if_exists(child_a);
-    print_node_if_exists(child_b);
+    print_node_if_exists(child_c);
     println!("--------------------------");
     println!("{:?}", node);
     println!("--------------------------");
@@ -21,6 +22,7 @@ fn main() {
     let node_x = &node['b'];
     println!("{}", node_x);
     println!("{}", node['a']);
+    println!("{:#?}", node['c']);
 }
 
 fn print_node_if_exists(possible_node: Option<&Node>) {
