@@ -1,20 +1,23 @@
 use std::collections::HashMap;
 use std::fmt::Display;
 use std::ops::Index;
+use std::process::Command;
 
 #[derive(Debug)]
 pub struct Node {
     pub name: String,
     pub description: String,
     pub children: HashMap<char, Node>,
+    pub command: Option<Command>,
 }
 
 impl Node {
-    pub fn new(name: String, description: String) -> Self {
+    pub fn new(name: String, description: String, command: Option<Command>) -> Self {
         Self {
             name,
             description,
             children: HashMap::new(),
+            command,
         }
     }
 

@@ -2,11 +2,11 @@ mod node;
 use node::Node;
 
 fn main() {
-    let mut node = Node::new("Root".to_string(), "".to_string());
-    let child_node = Node::new("Child A".to_string(), "".to_string());
+    let mut node = Node::new("Root".to_string(), "".to_string(), None);
+    let child_node = Node::new("Child A".to_string(), "".to_string(), None);
     node.children.insert('a', child_node);
     node.children
-        .insert('b', Node::new("Child B".to_string(), "".to_string()));
+        .insert('b', Node::new("Child B".to_string(), "".to_string(), None));
     println!("{}", node);
     let child_a = node.get_child('a');
     let child_b = node.get_child('b');
