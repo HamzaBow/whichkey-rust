@@ -9,11 +9,11 @@ pub struct Node {
     pub name: String,
     pub description: String,
     pub children: HashMap<char, Node>,
-    pub command: Option<Command>,
+    pub command: Option<String>,
 }
 
 impl Node {
-    pub fn new(name: String, description: String, command: Option<Command>) -> Self {
+    pub fn new(name: String, description: String, command: Option<String>) -> Self {
         Self {
             name,
             description,
@@ -22,13 +22,13 @@ impl Node {
         }
     }
 
-    pub fn get_child(&self, ch: char) -> Option<&Node> {
-        return self.children.get(&ch);
-    }
+    // pub fn get_child(&self, ch: char) -> Option<&Node> {
+    //     return self.children.get(&ch);
+    // }
 
     pub fn run_command(&mut self) -> io::Result<Output> {
         match &mut self.command {
-            Some(command) => command.output(),
+            Some(command) => Command::new("bash").arg("-c").arg(command).output(),
             None => Err(io::Error::new(io::ErrorKind::Other, "No command set")),
         }
     }
