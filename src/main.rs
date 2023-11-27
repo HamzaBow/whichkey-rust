@@ -1,15 +1,10 @@
+mod default_tree;
 mod node;
 
-use node::Node;
+use default_tree::get_default_tree;
 
 fn main() {
-    let mut node = Node::new(
-        "Root".to_string(),
-        "".to_string(),
-        Some(String::from(
-            "google-chrome --new-window --profile-directory=\"Profile 5\"",
-        )),
-    );
-    // println!("{:#?}", node)
-    let _ = node.run_command();
+    let node = get_default_tree();
+    println!("{:#?}", node)
+    // let _ = node.run_command();
 }
